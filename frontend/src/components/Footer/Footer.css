@@ -1,0 +1,79 @@
+.footer{
+    color: #a0a0a0;
+    background-color: #0d0d0d; /* Rich deep black */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 10%;
+    padding-top: 100px;
+}
+.footer-content{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+}
+.footer-content-left , .footer-content-center , .footer-content-right {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.footer-content-left img {
+    height: 45px; /* Same elegant height as Navbar */
+    width: auto;
+}
+.footer-content-left h2, .footer-content-center h2, .footer-content-right h2{
+    color: var(--accent-color); /* Creamy Gold section titles */
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.footer-content-center ul li, .footer-content-right ul li {
+    margin-bottom: 15px; /* Increased spacing for readability */
+    list-style: none;
+    transition: var(--transition);
+}
+.footer-content-center ul li:hover, .footer-content-right ul li:hover {
+    color: var(--accent-color);
+    padding-left: 5px; /* Subtle slide effect on hover */
+}
+.footer-social-icons img{
+    width: 40px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+.footer-social-icons img:hover{
+    transform: translateY(-5px);
+    filter: brightness(0) saturate(100%) invert(85%) sepia(21%) saturate(1478%) hue-rotate(326deg) brightness(101%) contrast(97%); /* Glow to Creamy Gold */
+}
+.footer-social-icons{
+    display: flex;
+    gap: 15px;
+}
+.footer li{
+    cursor: pointer;
+}
+.footer-copyright {
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0.5px;
+}
+.footer hr{
+    width: 100%;
+    height: 1px;
+    background-color: #222222; /* Very thin and subtle line */
+    border: none;
+    margin: 40px 0px 20px 0px;
+}
+@media (max-width:750px) {
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+    .footer-copyright{
+        text-align: center;
+    }
+}

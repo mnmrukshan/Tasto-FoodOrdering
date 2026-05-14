@@ -1,0 +1,78 @@
+.header{
+    height: 100vh;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    margin-top: 0;
+    margin-bottom: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%), url('/burger_cola_hero.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.header-contents{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 45%;
+    top: 55%;
+    transform: translateY(-50%);
+    left: 10vw; /* Keep aligned with the 80% layout approximately */
+    animation: fadeIn 2s;
+}
+.header-contents h2{
+    font-weight: 700;
+    background: linear-gradient(to bottom, #FFFFFF 50%, #E0E0E0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: max(4.5vw,22px);
+    line-height: 1.1;
+    font-family: 'Outfit', serif;
+    filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.6)); /* Enhanced contrast */
+}
+.header-contents p{
+    color: #ffffff;
+    font-size: 1.1vw;
+    line-height: 1.6;
+    font-weight: 500;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+.header-contents button, .header-contents a{
+    border: none;
+    color: #000;
+    font-weight: 700;
+    padding: 1vw 2.3vw;
+    background: linear-gradient(135deg, #FACC15 0%, #FB923C 100%);
+    font-size: max(1vw,13px);
+    border-radius: 50px;
+    box-shadow: 0px 4px 15px rgba(234, 179, 8, 0.4);
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+.header-contents button:hover, .header-contents a:hover {
+    background: #e6a84d;
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+@media (max-width:1050px) {
+    .header{
+        height: 45vw;
+    }
+    .header-contents{
+        max-width: 50%;
+    }
+}
+@media(max-width:750px){
+    .header-contents{
+        max-width: 55%;
+    }
+    .header-contents p{
+       display: none;
+    }
+    .header-contents button, .header-contents a{
+        padding: 2vw 4vw;
+    }
+}
