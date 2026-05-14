@@ -1,0 +1,101 @@
+.food-item{
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    background-color: #1a1a1a; /* Slightly lighter than pure black */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: fadeIn 1s;
+    overflow: hidden;
+}
+.food-item:hover{
+    transform: scale(1.04);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7);
+}
+.food-item-img-container{
+    position: relative;
+}
+.food-item-img-container .add{
+    width: 35px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.food-item-img-container .add:hover{
+    border: 2px solid var(--accent-color);
+}
+.food-item-image{
+   width: 100%;
+   border-radius: 15px 15px 0px 0px;
+}
+.food-item-counter{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 50px;
+    background-color: #f0f0f0; /* Clean light gray */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.food-item-counter .counter-btn {
+    background: transparent;
+    border: none;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    transition: background 0.2s, transform 0.1s;
+}
+.food-item-counter .counter-btn:hover {
+    background: #e0e0e0;
+    transform: scale(1.1);
+}
+.food-item-counter p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 15px;
+    text-align: center;
+}
+.food-item-info{
+    padding: 20px;
+}
+.food-item-name-rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.food-item-name-rating p{
+    font-size: 20px;
+    font-weight: 600; /* Bolder for professional look */
+    color: #ffffff;
+}
+.food-item-name-rating img{
+    width: 70px;
+    /* Filter to change stars to gold-ish theme */
+    filter: brightness(1.1) sepia(1) saturate(5) hue-rotate(350deg);
+}
+.food-item-desc{
+    color: #a0a0a0; /* Subtler grayish-white */
+    font-size: 13px;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+.food-item-price{
+    color: var(--accent-color); /* Creamy Gold */
+    font-size: 22px;
+    font-weight: 600;
+    margin: 15px 0px 5px 0px;
+}
