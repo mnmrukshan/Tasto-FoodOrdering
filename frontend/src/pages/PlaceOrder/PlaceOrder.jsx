@@ -76,10 +76,10 @@ const PlaceOrder = () => {
     useEffect(() => {
         if (!token) {
             toast.error("Please sign in to place an order")
-            navigate('/cart')
+            navigate('/cart', { replace: true })
         }
         else if (getTotalCartAmount() === 0) {
-            navigate('/cart')
+            navigate('/cart', { replace: true })
         }
     }, [token])
 
