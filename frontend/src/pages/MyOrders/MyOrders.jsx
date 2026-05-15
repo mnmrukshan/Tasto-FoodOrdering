@@ -79,6 +79,15 @@ const MyOrders = () => {
     doc.save(`Tasto_Invoice_${order._id.slice(-6)}.pdf`);
   }
 
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'Food Processing': return '#EAB308';
+      case 'Out for Delivery': return '#F97316';
+      case 'Delivered': return '#22C55E';
+      default: return '#ffffff';
+    }
+  }
+
   useEffect(()=>{
     if (token) {
       fetchOrders();
@@ -93,18 +102,17 @@ const MyOrders = () => {
           return (
             <div key={index} className='my-orders-order'>
                 <img src={assets.parcel_icon} alt="" />
-                <p>{order.items.map((item,index)=>{
-                  if (index === order.items.length-1) {
-                    return item.name+" x "+item.quantity
-                  }
-                  else{
-                    return item.name+" x "+item.quantity+", "
-                  }
-                  
+                <p>{order.items.map((item,i)=>{
+                  return i === order.items.length-1 
+                    ? `${item.name} x ${item.quantity}` 
+                    : `${item.name} x ${item.quantity}, `
                 })}</p>
                 <p>{currency}{order.amount}.00</p>
                 <p>Items: {order.items.length}</p>
-                <p><span>&#x25cf;</span> <b>{order.status}</b></p>
+                <p>
+                  <span style={{ color: getStatusColor(order.status) }}>&#x25cf;</span> 
+                  <b style={{ color: getStatusColor(order.status) }}>{order.status}</b>
+                </p>
                 <div className="order-actions">
                   <button onClick={fetchOrders}>Track Order</button>
                   <button className="invoice-btn" onClick={() => generateInvoice(order)}>Download Receipt</button>

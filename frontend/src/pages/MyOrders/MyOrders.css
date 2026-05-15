@@ -46,9 +46,9 @@
 }
 
 .my-orders-order p span {
-    color: var(--accent-color);
     margin-right: 8px;
     font-size: 10px;
+    filter: drop-shadow(0 0 5px currentColor);
 }
 
 .my-orders-order p b {

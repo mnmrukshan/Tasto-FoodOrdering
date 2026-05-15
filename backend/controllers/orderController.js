@@ -130,4 +130,15 @@ const verifyOrder = async (req, res) => {
 
 }
 
-export { placeOrder, listOrders, userOrders, updateStatus, verifyOrder, placeOrderCod }
+// Removing Order from Database
+const removeOrder = async (req, res) => {
+    try {
+        await orderModel.findByIdAndDelete(req.body.orderId);
+        res.json({ success: true, message: "Order Removed" })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" })
+    }
+}
+
+export { placeOrder, listOrders, userOrders, updateStatus, verifyOrder, placeOrderCod, removeOrder }
