@@ -62,6 +62,9 @@ import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import checked from './checked.png'
 import un_checked from './un_checked.png'
+import mobile_mockup from './mobile_mockup.png'
+import qr_code from './qr_code.png'
+import iphone16_frame from './iphone16_frame.png'
 
 export const assets = {
     logo,
@@ -85,7 +88,10 @@ export const assets = {
     bag_icon,
     parcel_icon,
     checked,
-    un_checked
+    un_checked,
+    mobile_mockup,
+    qr_code,
+    iphone16_frame
 }
 
 export const menu_list = [

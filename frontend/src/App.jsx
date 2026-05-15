@@ -10,10 +10,22 @@ import MyOrders from './pages/MyOrders/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify/Verify'
+import MobilePreview from './pages/MobilePreview/MobilePreview'
+import { useLocation } from 'react-router-dom'
 
 const App = () => {
 
   const [showLogin,setShowLogin] = useState(false);
+  const location = useLocation();
+  const isMobilePreview = location.pathname === '/mobile-preview';
+
+  if (isMobilePreview) {
+    return (
+      <Routes>
+        <Route path='/mobile-preview' element={<MobilePreview />}/>
+      </Routes>
+    )
+  }
 
   return (
     <>
