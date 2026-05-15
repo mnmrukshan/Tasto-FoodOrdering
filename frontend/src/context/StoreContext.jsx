@@ -9,7 +9,19 @@ const StoreContextProvider = (props) => {
     const [food_list, setFoodList] = useState(food_list_assets);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
+    const [userData, setUserData] = useState({ name: "", email: "" });
     const [search, setSearch] = useState("");
+
+    const fetchUserProfile = async (token) => {
+        try {
+            const response = await axios.post(url + "/api/user/profile", {}, { headers: { token } });
+            if (response.data.success) {
+                setUserData(response.data.user);
+            }
+        } catch (error) {
+            console.error("Error fetching profile:", error);
+        }
+    }
     const currency = "Rs. ";
     const deliveryCharge = 250;
 
@@ -64,8 +76,10 @@ const StoreContextProvider = (props) => {
         async function loadData() {
             await fetchFoodList();
             if (localStorage.getItem("token")) {
-                setToken(localStorage.getItem("token"))
-                await loadCartData({ token: localStorage.getItem("token") })
+                const storedToken = localStorage.getItem("token");
+                setToken(storedToken)
+                await loadCartData({ token: storedToken })
+                await fetchUserProfile(storedToken);
             }
         }
         loadData()
@@ -81,6 +95,8 @@ const StoreContextProvider = (props) => {
         getTotalCartAmount,
         token,
         setToken,
+        userData,
+        setUserData,
         loadCartData,
         setCartItems,
         currency,

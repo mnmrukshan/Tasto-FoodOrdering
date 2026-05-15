@@ -1,13 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../Context/StoreContext'
 import { useNavigate } from 'react-router-dom';
 import { assets } from '../../assets/assets';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
 
   const { cartItems, food_list, addToCart, removeFromCart, getTotalCartAmount, url, currency, deliveryCharge } = useContext(StoreContext);
   const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    if (getTotalCartAmount() === 0) {
+      toast.error("Your cart is empty!");
+    } else {
+      navigate('/order');
+      window.scrollTo(0, 0);
+    }
+  }
+
+  if (getTotalCartAmount() === 0) {
+    return (
+      <div className='cart-empty fade-in'>
+        <div className="empty-content glass-panel">
+          <img src={assets.parcel_icon} alt="" />
+          <h2>Your Cart is Empty</h2>
+          <p>Add some delicious meals from our menu to get started!</p>
+          <button onClick={() => navigate('/')}>Explore Menu</button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className='cart'>
@@ -57,7 +80,7 @@ const Cart = () => {
               <b>{currency}{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + deliveryCharge}</b>
             </div>
           </div>
-          <button onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>
+          <button onClick={handleCheckout}>PROCEED TO CHECKOUT</button>
         </div>
 
         <div className="cart-promocode glass-panel">
@@ -73,4 +96,3 @@ const Cart = () => {
 }
 
 export default Cart
-

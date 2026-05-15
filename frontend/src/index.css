@@ -93,3 +93,43 @@ input:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-color);
 }
+
+/* Premium Toastify Styles */
+.Toastify__toast {
+  background: rgba(20, 20, 20, 0.8) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: 16px;
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  margin-bottom: 15px;
+}
+
+.Toastify__toast--success {
+  color: var(--accent-color) !important;
+}
+
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: var(--accent-color) !important;
+}
+
+.Toastify__progress-bar--success {
+  background: linear-gradient(to right, #FACC15, #FB923C) !important;
+}
+
+.Toastify__close-button {
+  color: #fff;
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+.Toastify__toast-body {
+  padding: 10px 15px;
+}

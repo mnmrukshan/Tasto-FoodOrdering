@@ -25,7 +25,7 @@ const loginUser = async (req,res) => {
         }
 
         const token = createToken(user._id)
-        res.json({success:true,token})
+        res.json({success:true,token, user: {name: user.name, email: user.email}})
     } catch (error) {
         console.log(error);
         res.json({success:false,message:"Error"})
@@ -57,7 +57,7 @@ const registerUser = async (req,res) => {
         const newUser = new userModel({name, email, password: hashedPassword})
         const user = await newUser.save()
         const token = createToken(user._id)
-        res.json({success:true,token})
+        res.json({success:true,token, user: {name: user.name, email: user.email}})
 
     } catch(error){
         console.log(error);
@@ -65,4 +65,15 @@ const registerUser = async (req,res) => {
     }
 }
 
-export {loginUser, registerUser}
+// get user profile
+const getProfile = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.body.userId);
+        res.json({ success: true, user: { name: user.name, email: user.email } });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+}
+
+export { loginUser, registerUser, getProfile }

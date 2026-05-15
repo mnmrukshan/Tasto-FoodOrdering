@@ -195,21 +195,25 @@
     border: 1.5px solid var(--bg-color); /* Added border for better separation */
 }
 
-.navbar-right button {
+.navbar-right button{
     background: transparent;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text-primary);
-    border: 1px solid var(--accent-color);
-    padding: 10px 30px;
+    border: 1.5px solid var(--accent-color);
+    padding: 9px 25px;
     border-radius: 50px;
     cursor: pointer;
-    transition: var(--transition);
-    white-space: nowrap;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+    font-weight: 500;
 }
 
-.navbar-right button:hover {
-    background: var(--accent-color);
-    color: #000;
+.navbar-right button:hover{
+    background-color: rgba(234, 179, 8, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+    font-weight: 600;
 }
 
 .navbar-profile{
@@ -217,47 +221,103 @@
     cursor: pointer;
 }
 
-.navbar-profile-dropdown{
+.profile-icon-main {
+    transition: transform 0.3s ease;
+    filter: brightness(0) saturate(100%) invert(74%) sepia(61%) saturate(3062%) hue-rotate(15deg) brightness(101%) contrast(93%);
+}
+
+.navbar-profile:hover .profile-icon-main {
+    transform: scale(1.1);
+}
+
+.navbar-profile-dropdown {
     position: absolute;
     display: none;
+    flex-direction: column;
     right: 0;
-    z-index: 10;
+    top: 50px;
+    z-index: 1000;
+    width: 220px;
+    background: rgba(13, 13, 13, 0.85); /* Premium dark glass */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 15px 0;
+    border-radius: 12px;
+    border: 1px solid rgba(234, 179, 8, 0.2); /* Elegant gold border */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    list-style: none;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+    opacity: 0;
 }
 
-.navbar-profile-dropdown li{
+.navbar-profile-dropdown.active {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.user-details {
+    padding: 5px 20px 15px;
+}
+
+.user-name {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-email {
+    color: #888;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-divider {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+}
+
+.navbar-profile-dropdown li {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    padding: 12px 20px;
     cursor: pointer;
-    white-space: nowrap;
+    transition: all 0.3s ease;
+    color: #fff;
 }
 
-.navbar-profile-dropdown img{
-    width: 20px;
-    filter: invert(1);
+.navbar-profile-dropdown li img {
+    width: 18px;
+    filter: brightness(0) saturate(100%) invert(74%) sepia(61%) saturate(3062%) hue-rotate(15deg) brightness(101%) contrast(93%); /* Gold icons */
 }
 
-.navbar-profile-dropdown li:hover{
+.navbar-profile-dropdown li p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.navbar-profile-dropdown li:hover {
+    background: rgba(234, 179, 8, 0.1); /* Soft gold highlight */
     color: var(--accent-color);
 }
 
-.navbar-profile:hover .navbar-profile-dropdown{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: var(--surface-color);
-    padding: 12px 25px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
-    list-style: none;
-    margin-top: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+.logout-item:hover {
+    background: rgba(255, 0, 0, 0.05) !important;
+    color: #ff4d4d !important;
 }
 
-.navbar-profile hr{
-    background-color: var(--border-color);
-    height: 1px;
-    border: none;
+.logout-item:hover img {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(93%) saturate(4500%) hue-rotate(345deg) brightness(95%) contrast(100%) !important;
 }
 
 @media (max-width:1050px) {

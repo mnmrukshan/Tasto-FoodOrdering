@@ -1,70 +1,213 @@
-.place-order{
+.place-order {
     display: flex;
-    align-items: start;
+    align-items: stretch;
     justify-content: space-between;
-    gap: 50px;
-    margin: 100px 0px;
-}
-.place-order-left{
-    width: 100%;
-    max-width: max(30%,500px);
-}
-.place-order-left .title{
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 50px;
-}
-.place-order-left input{
-    margin-bottom: 15px;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #C5C5C5;
-    border-radius: 4px;
-    outline-color: tomato;
-}
-.place-order-left .multi-field{
-    display: flex;
-    gap: 10px;
-}
-.place-order-right{
-    width: 100%;
-    max-width: max(40%,500px);
-}
-.place-order-submit{
-    margin-top: 50px;
-    border: none;
-    background-color: tomato;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.payment{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 15px;
-}
-.payment h2{
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-.payment .payment-option{
-    display: flex;
-    align-items: center;
-    gap: 10px ;
-    border: 1px solid tomato;
-    padding: 15px;
-    border-radius: 4px;
-    min-width: 300px;
-    cursor: pointer;
-}
-.payment .payment-option:hover{
-    background-color:  #ffe7de;
+    gap: 30px;
+    margin: 40px 0 20px 0; /* Reduced margins */
+    min-height: 480px;
 }
 
-@media (max-width:700px) {
-    .place-order{
+.glass-panel {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px 40px; /* Reduced vertical padding */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.place-order-left {
+    max-width: 600px;
+    flex: 1.2;
+}
+
+.place-order-right {
+    max-width: 500px;
+    flex: 1;
+    justify-content: center;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Reduced gap */
+    width: 100%;
+}
+
+.place-order-left .title {
+    font-size: 24px; /* Slightly smaller */
+    font-weight: 800;
+    margin-bottom: 25px; /* Reduced margin */
+    color: var(--accent-color);
+    letter-spacing: -0.5px;
+}
+
+.place-order-left input {
+    margin-bottom: 15px; /* Reduced margin */
+    width: 100%;
+    padding: 12px 20px; /* More compact */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    outline: none;
+    color: #fff;
+    font-size: 14px; /* Smaller font */
+    transition: all 0.3s ease;
+}
+
+.place-order-left input::placeholder {
+    font-size: 13px; /* Smaller placeholder */
+    opacity: 0.6;
+}
+
+/* Autofill Fix */
+.place-order-left input:-webkit-autofill,
+.place-order-left input:-webkit-autofill:hover,
+.place-order-left input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px #111 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.place-order-left input:focus {
+    border-color: var(--accent-color);
+    background: rgba(234, 179, 8, 0.05);
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);
+}
+
+.place-order-left .multi-field {
+    display: flex;
+    gap: 15px;
+}
+
+.cart-total h2, .payment h2 {
+    font-size: 20px; /* More compact headings */
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0; /* Tighter padding */
+    color: #888;
+    font-size: 14px;
+}
+
+.cart-total-details hr {
+    margin: 5px 0;
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cart-total-details.grand-total {
+    color: #fff;
+    font-size: 17px;
+    padding-top: 10px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Tighter gap */
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px; /* Thinner boxes */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.payment-option:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.payment-option.active {
+    border: 1px solid #EAB308 !important;
+    background: rgba(234, 179, 8, 0.05);
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.1);
+}
+
+.radio-circle {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.payment-option.active .radio-circle {
+    border-color: #EAB308;
+}
+
+.payment-option.active .radio-circle::after {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #EAB308;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.payment-option p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.place-order-submit {
+    width: 100%;
+    margin-top: 5px;
+    padding: 15px; /* Scaled down height */
+    border-radius: 10px;
+    background: linear-gradient(135deg, #FACC15 0%, #FB923C 100%);
+    color: #000;
+    font-weight: 800;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.place-order-submit:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(234, 179, 8, 0.3);
+    filter: brightness(1.1);
+}
+
+.place-order-submit.disabled {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 1050px) {
+    .place-order {
         flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        margin-top: 30px;
+        min-height: auto;
+    }
+    .place-order-left, .place-order-right {
+        max-width: 100%;
     }
 }

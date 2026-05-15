@@ -10,41 +10,43 @@ const Navbar = ({ setShowLogin }) => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showSearch, setShowSearch] = useState(false);
-  const { getTotalCartAmount, token, setToken, search, setSearch } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken, search, setSearch, userData } = useContext(StoreContext);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      // Background transparency logic
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
-      // Hide/Show logic
-      if (window.scrollY > lastScrollY && window.scrollY > 150) {
-        setVisible(false); // Scrolling down
-      } else {
-        setVisible(true); // Scrolling up
-      }
-
+      if (window.scrollY > 50) setScrolled(true);
+      else setScrolled(false);
+      if (window.scrollY > lastScrollY && window.scrollY > 150) setVisible(false);
+      else setVisible(true);
       setLastScrollY(window.scrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showProfileMenu && !event.target.closest('.navbar-profile')) {
+        setShowProfileMenu(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [showProfileMenu]);
+
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
+    setShowProfileMenu(false);
     navigate('/')
   }
 
   return (
     <div className={`navbar ${scrolled ? 'scrolled' : ''} ${!visible ? 'hidden' : ''}`}>
+      {/* ... previous code remains the same ... */}
       <Link to='/' className='logo-container' onClick={() => window.scrollTo(0, 0)}>
         <svg className="logo-svg" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -96,16 +98,25 @@ const Navbar = ({ setShowLogin }) => {
           <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
         </Link>
         {!token ? <button onClick={() => setShowLogin(true)}>sign in</button>
-          : <div className='navbar-profile'>
-            <img src={assets.profile_icon} alt="" />
-            <ul className='navbar-profile-dropdown'>
-              <li onClick={() => navigate('/myorders')}> <img src={assets.bag_icon} alt="" /> <p>Orders</p></li>
-              <hr />
-              <li onClick={logout}> <img src={assets.logout_icon} alt="" /> <p>Logout</p></li>
-            </ul>
+          : <div className='navbar-profile' onClick={() => setShowProfileMenu(!showProfileMenu)}>
+            <img src={assets.profile_icon} alt="" className="profile-icon-main" />
+            <div className={`navbar-profile-dropdown ${showProfileMenu ? 'active' : ''}`}>
+              <div className="user-details">
+                <p className="user-name">{userData.name || "Guest"}</p>
+                <p className="user-email">{userData.email || "user@tasto.com"}</p>
+              </div>
+              <hr className="dropdown-divider" />
+              <li onClick={() => navigate('/myorders')}> 
+                <img src={assets.bag_icon} alt="" /> 
+                <p>Orders</p>
+              </li>
+              <li onClick={logout} className="logout-item"> 
+                <img src={assets.logout_icon} alt="" /> 
+                <p>Logout</p>
+              </li>
+            </div>
           </div>
         }
-
       </div>
     </div>
   )
