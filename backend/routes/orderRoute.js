@@ -1,6 +1,6 @@
 import express from "express"
 import authMiddleware from "../middleware/auth.js";
-import { listOrders, placeOrder, updateStatus, userOrders, verifyOrder, placeOrderCod, removeOrder } from "../controllers/orderController.js";
+import { listOrders, placeOrder, updateStatus, userOrders, verifyOrder, placeOrderCod, removeOrder, getDashboardStats } from "../controllers/orderController.js";
 
 const orderRouter = express.Router();
 
@@ -9,6 +9,7 @@ orderRouter.post("/placecod", authMiddleware, placeOrderCod);
 orderRouter.post("/verify", verifyOrder);
 orderRouter.post("/userorders", authMiddleware, userOrders);
 orderRouter.get("/list", listOrders);
+orderRouter.get("/dashboard-stats", getDashboardStats);
 orderRouter.post("/status", updateStatus);
 orderRouter.post("/remove", removeOrder);
 
