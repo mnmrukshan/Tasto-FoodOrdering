@@ -91,6 +91,8 @@ const MyOrders = () => {
   useEffect(()=>{
     if (token) {
       fetchOrders();
+      const interval = setInterval(fetchOrders, 5000); // Polling every 5s for absolute real-time sync
+      return () => clearInterval(interval);
     }
   },[token])
 
