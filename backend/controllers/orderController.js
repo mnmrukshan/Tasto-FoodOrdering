@@ -1,5 +1,6 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js"
+import foodModel from "../models/foodModel.js";
 import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -141,4 +142,28 @@ const removeOrder = async (req, res) => {
     }
 }
 
-export { placeOrder, listOrders, userOrders, updateStatus, verifyOrder, placeOrderCod, removeOrder }
+// Get Dashboard Stats for Admin panel
+const getDashboardStats = async (req, res) => {
+    try {
+        const totalOrders = await orderModel.countDocuments({ payment: true });
+        
+        const orders = await orderModel.find({ payment: true });
+        const totalRevenue = orders.reduce((sum, order) => sum + order.amount, 0);
+
+        const activeItems = await foodModel.countDocuments({});
+
+        res.json({
+            success: true,
+            data: {
+                totalOrders,
+                totalRevenue,
+                activeItems
+            }
+        })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error fetching dashboard stats" })
+    }
+}
+
+export { placeOrder, listOrders, userOrders, updateStatus, verifyOrder, placeOrderCod, removeOrder, getDashboardStats }
