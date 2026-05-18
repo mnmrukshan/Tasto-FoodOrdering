@@ -10,7 +10,7 @@ const List = ({ url }) => {
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
     if (response.data.success) {
-      setList(response.data.data);
+      setList(response.data.data.reverse());
     } else {
       toast.error("Error fetching food list")
     }
