@@ -84,7 +84,7 @@ const placeOrderCod = async (req, res) => {
 // Listing Order for Admin panel
 const listOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({});
+        const orders = await orderModel.find({}).sort({ _id: -1 });
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);
@@ -95,7 +95,7 @@ const listOrders = async (req, res) => {
 // User Orders for Frontend
 const userOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({ userId: req.body.userId });
+        const orders = await orderModel.find({ userId: req.body.userId }).sort({ _id: -1 });
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);
