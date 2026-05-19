@@ -60,7 +60,12 @@ const Orders = ({ url }) => {
         <div className="order-list">
           {orders.map((order, index) => (
             <div key={index} className='order-item glass-panel'>
-              <img src={assets?.parcel_icon || ""} alt="" />
+              <svg className="order-icon" viewBox="0 0 24 24" fill="none" stroke="#f3b414" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" fill="#f3b414" />
+                <path d="M21 16a9 9 0 0 0-18 0h18z" fill="rgba(243, 180, 20, 0.15)" />
+                <path d="M2 19h20" strokeWidth="2" />
+                <path d="M3 19v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1" />
+              </svg>
               <div>
                 <p className='order-item-food'>
                   {order.items.map((item, i) => (
