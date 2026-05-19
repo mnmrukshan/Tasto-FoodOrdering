@@ -1,15 +1,15 @@
 .app-download {
-    margin: 100px auto;
-    padding: 80px 60px;
-    background: rgba(0, 0, 0, 0.7); /* Deep semi-transparent black */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 40px;
-    border: 1px solid rgba(234, 179, 8, 0.4); /* Elegant Gold Border */
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+    margin: 80px auto;
+    padding: 60px 80px; /* Comfortable breathing room */
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px; /* Sleek modern rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Sophisticated thin border instead of bright gold */
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
     overflow: hidden;
     position: relative;
-    max-width: 1200px;
+    max-width: 1100px; /* Minimalistic narrower card for better composition */
 }
 
 .app-download::after {
@@ -20,11 +20,11 @@
     transform: translate(-50%, -50%);
     width: 120%;
     height: 120%;
-    background: radial-gradient(circle, rgba(234, 179, 8, 0.05) 0%, transparent 70%);
-    filter: blur(30px);
+    background: radial-gradient(circle, rgba(243, 180, 20, 0.04) 0%, transparent 70%);
+    filter: blur(40px);
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.6s ease;
     pointer-events: none;
 }
 
@@ -36,7 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 100px;
+    gap: 80px; /* Sleek gap for perfect breathing room */
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -46,151 +46,326 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.mobile-mockup {
+/* Polished compact iPhone 16 Pro vector mockup */
+.premium-phone-mockup {
+    width: 280px; /* Original larger scale */
+    height: 570px; /* Original larger scale */
+    position: relative;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 10;
+}
+
+.phone-bezel {
     width: 100%;
-    max-width: 380px;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
-    animation: float 6s ease-in-out infinite;
+    height: 100%;
+    background: #000;
+    border: 6px solid #1c1c1e; /* Ultra-sleek modern titanium border */
+    border-radius: 40px; /* Smooth rounded curves */
+    position: relative;
+    box-shadow: 
+        0px 20px 45px rgba(0, 0, 0, 0.8),
+        inset 0 0 2px rgba(255, 255, 255, 0.25);
+    padding: 4px; /* Thin inner bezel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+.phone-side-button {
+    position: absolute;
+    background: #2c2c2e;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
+.phone-side-button.volume-up {
+    top: 90px;
+    left: -8px;
+    width: 2px;
+    height: 30px;
+}
+
+.phone-side-button.volume-down {
+    top: 128px;
+    left: -8px;
+    width: 2px;
+    height: 30px;
+}
+
+.phone-side-button.power {
+    top: 110px;
+    right: -8px;
+    width: 2px;
+    height: 46px;
+}
+
+.phone-inner-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 36px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.95);
+}
+
+.phone-dynamic-island {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px; /* Scaled down dynamic island */
+    height: 16px;
+    background: #000;
+    border-radius: 10px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.camera-lens {
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, #0e1e38 0%, #000 80%);
+    border-radius: 50%;
+    opacity: 0.65;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 32px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.phone-screen::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+.phone-iframe-screentime {
+    width: 375px;
+    height: 144.3%; /* 100% / 0.693 */
+    transform: scale(0.693);
+    transform-origin: top left;
+    border: none;
+    background: #000;
+}
+
+.phone-reflection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0) 100%);
+    z-index: 50;
+    pointer-events: none;
+    transition: all 0.6s ease;
+}
+
+.phone-shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 10%;
+    right: 10%;
+    height: 12px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(6px);
+    z-index: -1;
+    transition: all 0.6s ease;
+}
+
+/* Polished Hover Interactive States */
+.premium-phone-mockup:hover {
+    transform: translateY(-8px) rotateY(-4deg) rotateX(3deg);
+}
+
+.premium-phone-mockup:hover .phone-bezel {
+    border-color: rgba(243, 180, 20, 0.6); /* Refined gold border glow */
+    box-shadow: 
+        0px 30px 65px rgba(0, 0, 0, 0.9),
+        0px 0px 15px rgba(243, 180, 20, 0.2),
+        inset 0 0 2px rgba(255, 255, 255, 0.35);
+}
+
+
+
+.premium-phone-mockup:hover .phone-reflection {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0) 100%);
+}
+
+.premium-phone-mockup:hover .phone-shadow {
+    bottom: -28px;
+    transform: scale(1.05);
+    opacity: 0.5;
+}
+
+/* Right Copy & Apple Typography Refinements */
 .app-download-right {
-    flex: 1.2;
+    flex: 1.25;
     text-align: left;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
+.premium-badge {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 4px; /* Sleek rectangular badge */
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
 .app-download-right h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem; /* Rescaled for elegant premium feel */
     font-weight: 800;
     color: #fff;
-    margin-bottom: 20px;
-    line-height: 1.1;
-    background: linear-gradient(135deg, #fff 0%, #EAB308 100%);
+    margin-bottom: 16px;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #fff 40%, #f3b414 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
 }
 
 .app-tagline {
-    font-size: 1.1rem;
-    color: #a0a0a0;
-    margin-bottom: 40px;
+    font-size: 0.95rem; /* Rescaled text */
+    color: rgba(255, 255, 255, 0.55); /* Lighter grey for luxury contrast */
+    margin-bottom: 30px;
     line-height: 1.6;
-    max-width: 500px;
+    max-width: 480px;
 }
 
-.app-download-qr-section {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+/* Glassmorphism Yellow Frosted Glass Button */
+.cta-wrapper {
+    margin-bottom: 30px;
 }
 
-.qr-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    padding: 18px;
-    background: rgba(255, 255, 255, 0.03);
+.premium-cta-btn {
+    background: rgba(243, 180, 20, 0.12); /* Semi-transparent yellow */
     backdrop-filter: blur(10px);
-    border-radius: 18px;
-    border: 1px solid rgba(234, 179, 8, 0.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Tooltip Styling */
-.qr-wrapper::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    width: 180px;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.95);
-    border: 1px solid rgba(234, 179, 8, 0.4);
-    color: #EAB308;
-    font-size: 0.7rem;
-    font-weight: 500;
-    line-height: 1.3;
-    text-align: center;
-    border-radius: 8px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 100;
-    pointer-events: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-.qr-wrapper:hover::before {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-.qr-wrapper:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(234, 179, 8, 0.6);
-}
-
-.qr-container-inner {
-    width: 100px;
-    height: 100px;
+    -webkit-backdrop-filter: blur(10px);
+    color: #f3b414; /* Glowing yellow brand text */
+    border: 1px solid rgba(243, 180, 20, 0.45); /* Thin solid brand gold border */
+    padding: 14px 38px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 8px;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.scan-me-text {
-    font-size: 0.5rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    background: linear-gradient(135deg, #fff 0%, #EAB308 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.4s ease;
-    text-transform: uppercase;
+.btn-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    transition: 0.75s;
 }
 
+.btn-text {
+    position: relative;
+    z-index: 10;
+}
+
+/* Glassmorphism interactive states */
+.premium-cta-btn:hover {
+    background: rgba(243, 180, 20, 0.22); /* Stronger yellow frosted background */
+    border-color: #f3b414; /* Fuller glow gold border */
+    color: #fff; /* Shifts text to white for modern click interest */
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 30px rgba(243, 180, 20, 0.2),
+        0 0 20px rgba(243, 180, 20, 0.1);
+}
+
+.premium-cta-btn:hover .btn-glow {
+    left: 140%;
+    transition: 0.8s ease-in-out;
+}
+
+.premium-cta-btn:active {
+    transform: translateY(-1px);
+    background: rgba(243, 180, 20, 0.3);
+}
+
+/* Native platforms styling - perfectly aligned below the button */
 .app-download-platforms {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.platforms-title {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.store-buttons-container {
+    display: flex;
+    gap: 12px;
 }
 
 .store-btn {
-    height: 45px;
+    height: 36px; /* Clean smaller size */
     cursor: pointer;
     transition: all 0.3s ease;
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)) opacity(0.85);
 }
 
 .store-btn:hover {
-    transform: translateY(-3px);
-    filter: drop-shadow(0 8px 20px rgba(234, 179, 8, 0.3));
+    transform: translateY(-2px);
+    filter: drop-shadow(0 6px 12px rgba(243, 180, 20, 0.15)) opacity(1);
 }
 
+/* Responsiveness adjustments */
 @media (max-width: 1050px) {
     .app-download {
-        padding: 60px 40px;
+        padding: 50px 40px;
     }
     .app-download-container {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 60px;
+        gap: 50px;
     }
     .app-download-right {
         text-align: center;
@@ -199,26 +374,32 @@
         align-items: center;
     }
     .app-download-right h1 {
-        font-size: 2.5rem;
-    }
-    .app-download-qr-section {
-        flex-direction: column;
+        font-size: 2.4rem;
     }
     .app-download-platforms {
-        flex-direction: row;
-        gap: 20px;
+        align-items: center;
     }
 }
 
 @media (max-width: 600px) {
     .app-download {
-        margin: 40px 20px;
+        margin: 40px 16px;
         padding: 40px 20px;
     }
     .app-download-right h1 {
         font-size: 2rem;
     }
-    .app-download-platforms {
-        flex-direction: column;
+    .premium-phone-mockup {
+        width: 200px; /* Even smaller for mobile views */
+        height: 410px;
+    }
+    .phone-bezel {
+        border-radius: 34px;
+    }
+    .phone-inner-frame {
+        border-radius: 30px;
+    }
+    .phone-screen {
+        border-radius: 28px;
     }
 }

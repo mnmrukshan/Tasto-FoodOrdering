@@ -42,83 +42,155 @@
     width: 100%;
     max-width: 1400px;
 }
-
 .iphone-mockup-elite {
+    width: 300px; /* Gorgeous larger scale for full page preview */
+    height: 610px;
     position: relative;
-    height: 85vh;
-    aspect-ratio: 9 / 19.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
+    z-index: 10;
 }
 
-.css-iphone-frame {
+.iphone-mockup-elite .phone-bezel {
     width: 100%;
     height: 100%;
     background: #000;
-    border: 8px solid #121212; /* Slimmer Metallic Bezels */
-    border-radius: 55px;
+    border: 6px solid #1c1c1e;
+    border-radius: 40px;
     position: relative;
-    overflow: hidden;
+    box-shadow: 
+        0px 20px 45px rgba(0, 0, 0, 0.8),
+        0px 0px 30px rgba(243, 180, 20, 0.15), /* Glowing gold accent consistent with the mockup */
+        inset 0 0 2px rgba(255, 255, 255, 0.25);
+    padding: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 
-        inset 0 0 15px rgba(234, 179, 8, 0.1), 
-        0 0 40px rgba(234, 179, 8, 0.15); /* Softer Glow */
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.dynamic-island {
+.iphone-mockup-elite .phone-side-button {
     position: absolute;
-    top: 15px; /* Precision position */
+    background: #2c2c2e;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.iphone-mockup-elite .phone-side-button.volume-up {
+    top: 98px;
+    left: -8px;
+    width: 2px;
+    height: 32px;
+}
+
+.iphone-mockup-elite .phone-side-button.volume-down {
+    top: 138px;
+    left: -8px;
+    width: 2px;
+    height: 32px;
+}
+
+.iphone-mockup-elite .phone-side-button.power {
+    top: 118px;
+    right: -8px;
+    width: 2px;
+    height: 48px;
+}
+
+.iphone-mockup-elite .phone-inner-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 36px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.95);
+}
+
+.iphone-mockup-elite .phone-dynamic-island {
+    position: absolute;
+    top: 12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px; /* Reduced by 40% */
-    height: 25px; /* Reduced by 40% */
+    width: 70px;
+    height: 18px;
     background: #000;
-    border-radius: 20px;
-    z-index: 30;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.8);
-    pointer-events: none;
+    border-radius: 10px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
-.mobile-iframe-elite {
-    width: 111.1%; /* Scale 0.9 compensation (100 / 0.9) */
-    height: 111.1%;
-    border: none;
-    background: #fff;
-    transform: scale(0.9); /* Downscaled for high-density feel */
-    transform-origin: center center;
+.iphone-mockup-elite .camera-lens {
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, #0e1e38 0%, #000 80%);
+    border-radius: 50%;
+    opacity: 0.65;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.iphone-mockup-elite .phone-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 32px;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    border-radius: 45px;
 }
 
-.mobile-iframe-elite::-webkit-scrollbar {
-    display: none !important;
+.iphone-mockup-elite .phone-screen::-webkit-scrollbar {
+    display: none;
+}
+
+.iphone-mockup-elite .phone-iframe-screentime {
+    width: 375px;
+    height: 134%; /* 100% / 0.746 */
+    transform: scale(0.746); /* Fits 375px mobile viewport perfectly inside 280px screen */
+    transform-origin: top left;
+    border: none;
+    background: #fff; /* White background for the mobile screen */
+}
+
+.iphone-mockup-elite .phone-reflection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0) 100%);
+    z-index: 50;
+    pointer-events: none;
+    transition: all 0.6s ease;
 }
 
 .preview-info-elite {
     color: #fff;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .preview-info-elite h1 {
-    font-size: 6rem;
+    font-size: 5rem; /* Slightly refined for premium screen fitting */
     font-weight: 800;
-    margin-bottom: 24px;
-    line-height: 0.9;
+    margin-bottom: 18px;
+    line-height: 1.0; /* Tight and elegant line height */
     background: linear-gradient(135deg, #fff 40%, #EAB308 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
 }
 
 .preview-info-elite p {
-    font-size: 1.4rem;
-    color: #888;
-    line-height: 1.5;
-    max-width: 450px;
+    font-size: 0.95rem; /* Polished elegant small text size */
+    color: #a3a3a3; /* Elegant soft light gray */
+    line-height: 1.6;
+    max-width: 420px;
 }
 
 @media (max-width: 1100px) {
@@ -134,7 +206,8 @@
         font-size: 4rem;
     }
     .iphone-mockup-elite {
-        height: 70vh;
+        transform: scale(0.85);
+        transform-origin: center center;
     }
 }
 
