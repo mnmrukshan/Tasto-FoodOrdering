@@ -45,6 +45,12 @@
     filter: brightness(0) saturate(100%) invert(74%) sepia(61%) saturate(3062%) hue-rotate(15deg) brightness(101%) contrast(93%);
 }
 
+.my-orders-order .order-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
 .my-orders-order p span {
     margin-right: 8px;
     font-size: 10px;
@@ -81,18 +87,31 @@
 }
 
 .invoice-btn {
-    background: linear-gradient(135deg, #FACC15 0%, #FB923C 100%) !important;
-    color: #000 !important;
-    border: none !important;
+    background: rgba(243, 180, 20, 0.15) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #f3b414 !important;
+    color: #f3b414 !important;
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600;
+    border-radius: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-size: 12px !important;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .invoice-btn:hover {
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(234, 179, 8, 0.3);
-    filter: brightness(1.1);
+    background: #f3b414 !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 0 20px rgba(243, 180, 20, 0.4);
+    filter: none;
+}
+
+.invoice-btn:active {
+    transform: translateY(0) scale(0.98);
 }
 
 @media (max-width: 1050px) {
