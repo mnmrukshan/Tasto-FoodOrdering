@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify/Verify'
 import MobilePreview from './pages/MobilePreview/MobilePreview'
 import { useLocation } from 'react-router-dom'
+import Chatbot from './components/Chatbot/Chatbot'
 
 const App = () => {
 
@@ -51,6 +52,7 @@ const App = () => {
           <Route path='/verify' element={<Verify />}/>
         </Routes>
       </div>
+      <Chatbot />
       <Footer />
     </>
   )
